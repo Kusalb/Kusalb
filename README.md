@@ -135,55 +135,6 @@ My projects focus on learning how intelligent systems can be designed, tested, a
 
 > The snake animation requires a small GitHub Actions workflow. See the setup instructions below.
 
-<details>
-<summary><b>⚙️ Enable the contribution snake</b></summary>
-
-<br />
-
-Create this file in your profile repository:
-
-```text
-.github/workflows/snake.yml
-```
-
-Add the following workflow:
-
-```yaml
-name: Generate contribution snake
-
-on:
-  schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-
-jobs:
-  generate:
-    permissions:
-      contents: write
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: Platane/snk/svg-only@v3
-        with:
-          github_user_name: Kusalb
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-
-      - uses: crazy-max/ghaction-github-pages@v4
-        with:
-          build_dir: dist
-          branch: output
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-After committing the workflow, open the **Actions** tab and run it once manually.
-
-</details>
 
 ---
 
